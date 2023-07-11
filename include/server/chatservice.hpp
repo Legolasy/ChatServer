@@ -3,7 +3,7 @@
 #include<functional>
 #include<unordered_map>
 #include<muduo/net/TcpConnection.h>
-#include "public.hpp"
+#include "mypublic.hpp"
 #include "json.hpp"
 using namespace std;
 using namespace muduo;

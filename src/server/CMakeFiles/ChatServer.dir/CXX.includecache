@@ -23,8 +23,18 @@ muduo/base/Logging.h
 -
 string
 -
-public.hpp
-/home/legolas/桌面/ChatServer/src/server/public.hpp
+mypublic.hpp
+/home/legolas/桌面/ChatServer/src/server/mypublic.hpp
+
+/home/legolas/桌面/ChatServer/src/server/db/db.cpp
+db.h
+/home/legolas/桌面/ChatServer/src/server/db/db.h
+muduo/base/Logging.h
+-
+mysql/mysql.h
+-
+string
+-
 
 /home/legolas/桌面/ChatServer/src/server/main.cpp
 chatserver.hpp
@@ -362,7 +372,7 @@ limits
 type_traits
 -
 
-include/public.hpp
+include/mypublic.hpp
 
 include/server/chatserver.hpp
 muduo/net/TcpServer.h
@@ -377,8 +387,14 @@ unordered_map
 -
 muduo/net/TcpConnection.h
 -
-public.hpp
-include/server/public.hpp
+mypublic.hpp
+include/server/mypublic.hpp
 json.hpp
 include/server/json.hpp
+
+include/server/db/db.h
+mysql/mysql.h
+-
+string
+-
 

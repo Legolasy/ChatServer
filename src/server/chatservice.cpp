@@ -1,7 +1,7 @@
 #include "chatservice.hpp"
 #include<muduo/base/Logging.h>
 #include<string>
-#include "public.hpp"
+#include "mypublic.hpp"
 using namespace muduo;
 //获取单例对象
 ChatService* ChatService::instance()
@@ -35,12 +35,12 @@ MsgHandler ChatService::getHandler(int msgid)
     }
 }
 //登陆业务
-    void login(const TcpConnectionPtr &conn,json &js,Timestamp)
+    void ChatService::login(const TcpConnectionPtr &conn,json &js,Timestamp)
     {
         LOG_INFO<<"Login Service!!!";
     }
     //注册业务
-    void reg(const TcpConnectionPtr &conn,json &js,Timestamp)
+    void ChatService::reg(const TcpConnectionPtr &conn,json &js,Timestamp)
     {
         LOG_INFO<<"Reg Service!!!";
     }
