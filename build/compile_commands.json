@@ -1,0 +1,17 @@
+[
+{
+  "directory": "/home/legolas/桌面/ChatServer/build/src/server",
+  "command": "/usr/bin/g++   -I/home/legolas/桌面/ChatServer/include -I/home/legolas/桌面/ChatServer/include/server  -g -g   -o CMakeFiles/ChatServer.dir/chatserver.cpp.o -c /home/legolas/桌面/ChatServer/src/server/chatserver.cpp",
+  "file": "/home/legolas/桌面/ChatServer/src/server/chatserver.cpp"
+},
+{
+  "directory": "/home/legolas/桌面/ChatServer/build/src/server",
+  "command": "/usr/bin/g++   -I/home/legolas/桌面/ChatServer/include -I/home/legolas/桌面/ChatServer/include/server  -g -g   -o CMakeFiles/ChatServer.dir/chatservice.cpp.o -c /home/legolas/桌面/ChatServer/src/server/chatservice.cpp",
+  "file": "/home/legolas/桌面/ChatServer/src/server/chatservice.cpp"
+},
+{
+  "directory": "/home/legolas/桌面/ChatServer/build/src/server",
+  "command": "/usr/bin/g++   -I/home/legolas/桌面/ChatServer/include -I/home/legolas/桌面/ChatServer/include/server  -g -g   -o CMakeFiles/ChatServer.dir/main.cpp.o -c /home/legolas/桌面/ChatServer/src/server/main.cpp",
+  "file": "/home/legolas/桌面/ChatServer/src/server/main.cpp"
+}
+]

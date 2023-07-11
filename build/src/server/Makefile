@@ -51,7 +51,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = /home/legolas/桌面/ChatServer
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/legolas/桌面/ChatServer
+CMAKE_BINARY_DIR = /home/legolas/桌面/ChatServer/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,14 +80,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/legolas/桌面/ChatServer && $(CMAKE_COMMAND) -E cmake_progress_start /home/legolas/桌面/ChatServer/CMakeFiles /home/legolas/桌面/ChatServer/src/server/CMakeFiles/progress.marks
-	cd /home/legolas/桌面/ChatServer && $(MAKE) -f CMakeFiles/Makefile2 src/server/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/legolas/桌面/ChatServer/CMakeFiles 0
+	cd /home/legolas/桌面/ChatServer/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/legolas/桌面/ChatServer/build/CMakeFiles /home/legolas/桌面/ChatServer/build/src/server/CMakeFiles/progress.marks
+	cd /home/legolas/桌面/ChatServer/build && $(MAKE) -f CMakeFiles/Makefile2 src/server/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/legolas/桌面/ChatServer/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/legolas/桌面/ChatServer && $(MAKE) -f CMakeFiles/Makefile2 src/server/clean
+	cd /home/legolas/桌面/ChatServer/build && $(MAKE) -f CMakeFiles/Makefile2 src/server/clean
 .PHONY : clean
 
 # The main clean target
@@ -97,22 +97,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/legolas/桌面/ChatServer && $(MAKE) -f CMakeFiles/Makefile2 src/server/preinstall
+	cd /home/legolas/桌面/ChatServer/build && $(MAKE) -f CMakeFiles/Makefile2 src/server/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/legolas/桌面/ChatServer && $(MAKE) -f CMakeFiles/Makefile2 src/server/preinstall
+	cd /home/legolas/桌面/ChatServer/build && $(MAKE) -f CMakeFiles/Makefile2 src/server/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/legolas/桌面/ChatServer && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/legolas/桌面/ChatServer/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/server/CMakeFiles/ChatServer.dir/rule:
-	cd /home/legolas/桌面/ChatServer && $(MAKE) -f CMakeFiles/Makefile2 src/server/CMakeFiles/ChatServer.dir/rule
+	cd /home/legolas/桌面/ChatServer/build && $(MAKE) -f CMakeFiles/Makefile2 src/server/CMakeFiles/ChatServer.dir/rule
 .PHONY : src/server/CMakeFiles/ChatServer.dir/rule
 
 # Convenience name for target.
@@ -122,7 +122,7 @@ ChatServer: src/server/CMakeFiles/ChatServer.dir/rule
 
 # fast build rule for target.
 ChatServer/fast:
-	cd /home/legolas/桌面/ChatServer && $(MAKE) -f src/server/CMakeFiles/ChatServer.dir/build.make src/server/CMakeFiles/ChatServer.dir/build
+	cd /home/legolas/桌面/ChatServer/build && $(MAKE) -f src/server/CMakeFiles/ChatServer.dir/build.make src/server/CMakeFiles/ChatServer.dir/build
 .PHONY : ChatServer/fast
 
 chatserver.o: chatserver.cpp.o
@@ -131,7 +131,7 @@ chatserver.o: chatserver.cpp.o
 
 # target to build an object file
 chatserver.cpp.o:
-	cd /home/legolas/桌面/ChatServer && $(MAKE) -f src/server/CMakeFiles/ChatServer.dir/build.make src/server/CMakeFiles/ChatServer.dir/chatserver.cpp.o
+	cd /home/legolas/桌面/ChatServer/build && $(MAKE) -f src/server/CMakeFiles/ChatServer.dir/build.make src/server/CMakeFiles/ChatServer.dir/chatserver.cpp.o
 .PHONY : chatserver.cpp.o
 
 chatserver.i: chatserver.cpp.i
@@ -140,7 +140,7 @@ chatserver.i: chatserver.cpp.i
 
 # target to preprocess a source file
 chatserver.cpp.i:
-	cd /home/legolas/桌面/ChatServer && $(MAKE) -f src/server/CMakeFiles/ChatServer.dir/build.make src/server/CMakeFiles/ChatServer.dir/chatserver.cpp.i
+	cd /home/legolas/桌面/ChatServer/build && $(MAKE) -f src/server/CMakeFiles/ChatServer.dir/build.make src/server/CMakeFiles/ChatServer.dir/chatserver.cpp.i
 .PHONY : chatserver.cpp.i
 
 chatserver.s: chatserver.cpp.s
@@ -149,7 +149,7 @@ chatserver.s: chatserver.cpp.s
 
 # target to generate assembly for a file
 chatserver.cpp.s:
-	cd /home/legolas/桌面/ChatServer && $(MAKE) -f src/server/CMakeFiles/ChatServer.dir/build.make src/server/CMakeFiles/ChatServer.dir/chatserver.cpp.s
+	cd /home/legolas/桌面/ChatServer/build && $(MAKE) -f src/server/CMakeFiles/ChatServer.dir/build.make src/server/CMakeFiles/ChatServer.dir/chatserver.cpp.s
 .PHONY : chatserver.cpp.s
 
 chatservice.o: chatservice.cpp.o
@@ -158,7 +158,7 @@ chatservice.o: chatservice.cpp.o
 
 # target to build an object file
 chatservice.cpp.o:
-	cd /home/legolas/桌面/ChatServer && $(MAKE) -f src/server/CMakeFiles/ChatServer.dir/build.make src/server/CMakeFiles/ChatServer.dir/chatservice.cpp.o
+	cd /home/legolas/桌面/ChatServer/build && $(MAKE) -f src/server/CMakeFiles/ChatServer.dir/build.make src/server/CMakeFiles/ChatServer.dir/chatservice.cpp.o
 .PHONY : chatservice.cpp.o
 
 chatservice.i: chatservice.cpp.i
@@ -167,7 +167,7 @@ chatservice.i: chatservice.cpp.i
 
 # target to preprocess a source file
 chatservice.cpp.i:
-	cd /home/legolas/桌面/ChatServer && $(MAKE) -f src/server/CMakeFiles/ChatServer.dir/build.make src/server/CMakeFiles/ChatServer.dir/chatservice.cpp.i
+	cd /home/legolas/桌面/ChatServer/build && $(MAKE) -f src/server/CMakeFiles/ChatServer.dir/build.make src/server/CMakeFiles/ChatServer.dir/chatservice.cpp.i
 .PHONY : chatservice.cpp.i
 
 chatservice.s: chatservice.cpp.s
@@ -176,7 +176,7 @@ chatservice.s: chatservice.cpp.s
 
 # target to generate assembly for a file
 chatservice.cpp.s:
-	cd /home/legolas/桌面/ChatServer && $(MAKE) -f src/server/CMakeFiles/ChatServer.dir/build.make src/server/CMakeFiles/ChatServer.dir/chatservice.cpp.s
+	cd /home/legolas/桌面/ChatServer/build && $(MAKE) -f src/server/CMakeFiles/ChatServer.dir/build.make src/server/CMakeFiles/ChatServer.dir/chatservice.cpp.s
 .PHONY : chatservice.cpp.s
 
 main.o: main.cpp.o
@@ -185,7 +185,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	cd /home/legolas/桌面/ChatServer && $(MAKE) -f src/server/CMakeFiles/ChatServer.dir/build.make src/server/CMakeFiles/ChatServer.dir/main.cpp.o
+	cd /home/legolas/桌面/ChatServer/build && $(MAKE) -f src/server/CMakeFiles/ChatServer.dir/build.make src/server/CMakeFiles/ChatServer.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -194,7 +194,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	cd /home/legolas/桌面/ChatServer && $(MAKE) -f src/server/CMakeFiles/ChatServer.dir/build.make src/server/CMakeFiles/ChatServer.dir/main.cpp.i
+	cd /home/legolas/桌面/ChatServer/build && $(MAKE) -f src/server/CMakeFiles/ChatServer.dir/build.make src/server/CMakeFiles/ChatServer.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -203,7 +203,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	cd /home/legolas/桌面/ChatServer && $(MAKE) -f src/server/CMakeFiles/ChatServer.dir/build.make src/server/CMakeFiles/ChatServer.dir/main.cpp.s
+	cd /home/legolas/桌面/ChatServer/build && $(MAKE) -f src/server/CMakeFiles/ChatServer.dir/build.make src/server/CMakeFiles/ChatServer.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -235,6 +235,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/legolas/桌面/ChatServer && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/legolas/桌面/ChatServer/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

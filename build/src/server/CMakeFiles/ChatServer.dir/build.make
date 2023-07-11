@@ -46,7 +46,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = /home/legolas/桌面/ChatServer
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/legolas/桌面/ChatServer
+CMAKE_BINARY_DIR = /home/legolas/桌面/ChatServer/build
 
 # Include any dependencies generated for this target.
 include src/server/CMakeFiles/ChatServer.dir/depend.make
@@ -58,17 +58,17 @@ include src/server/CMakeFiles/ChatServer.dir/progress.make
 include src/server/CMakeFiles/ChatServer.dir/flags.make
 
 src/server/CMakeFiles/ChatServer.dir/chatserver.cpp.o: src/server/CMakeFiles/ChatServer.dir/flags.make
-src/server/CMakeFiles/ChatServer.dir/chatserver.cpp.o: src/server/chatserver.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/legolas/桌面/ChatServer/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/server/CMakeFiles/ChatServer.dir/chatserver.cpp.o"
-	cd /home/legolas/桌面/ChatServer/src/server && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ChatServer.dir/chatserver.cpp.o -c /home/legolas/桌面/ChatServer/src/server/chatserver.cpp
+src/server/CMakeFiles/ChatServer.dir/chatserver.cpp.o: ../src/server/chatserver.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/legolas/桌面/ChatServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/server/CMakeFiles/ChatServer.dir/chatserver.cpp.o"
+	cd /home/legolas/桌面/ChatServer/build/src/server && /usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ChatServer.dir/chatserver.cpp.o -c /home/legolas/桌面/ChatServer/src/server/chatserver.cpp
 
 src/server/CMakeFiles/ChatServer.dir/chatserver.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ChatServer.dir/chatserver.cpp.i"
-	cd /home/legolas/桌面/ChatServer/src/server && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/legolas/桌面/ChatServer/src/server/chatserver.cpp > CMakeFiles/ChatServer.dir/chatserver.cpp.i
+	cd /home/legolas/桌面/ChatServer/build/src/server && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/legolas/桌面/ChatServer/src/server/chatserver.cpp > CMakeFiles/ChatServer.dir/chatserver.cpp.i
 
 src/server/CMakeFiles/ChatServer.dir/chatserver.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ChatServer.dir/chatserver.cpp.s"
-	cd /home/legolas/桌面/ChatServer/src/server && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/legolas/桌面/ChatServer/src/server/chatserver.cpp -o CMakeFiles/ChatServer.dir/chatserver.cpp.s
+	cd /home/legolas/桌面/ChatServer/build/src/server && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/legolas/桌面/ChatServer/src/server/chatserver.cpp -o CMakeFiles/ChatServer.dir/chatserver.cpp.s
 
 src/server/CMakeFiles/ChatServer.dir/chatserver.cpp.o.requires:
 
@@ -82,17 +82,17 @@ src/server/CMakeFiles/ChatServer.dir/chatserver.cpp.o.provides.build: src/server
 
 
 src/server/CMakeFiles/ChatServer.dir/chatservice.cpp.o: src/server/CMakeFiles/ChatServer.dir/flags.make
-src/server/CMakeFiles/ChatServer.dir/chatservice.cpp.o: src/server/chatservice.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/legolas/桌面/ChatServer/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/server/CMakeFiles/ChatServer.dir/chatservice.cpp.o"
-	cd /home/legolas/桌面/ChatServer/src/server && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ChatServer.dir/chatservice.cpp.o -c /home/legolas/桌面/ChatServer/src/server/chatservice.cpp
+src/server/CMakeFiles/ChatServer.dir/chatservice.cpp.o: ../src/server/chatservice.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/legolas/桌面/ChatServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/server/CMakeFiles/ChatServer.dir/chatservice.cpp.o"
+	cd /home/legolas/桌面/ChatServer/build/src/server && /usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ChatServer.dir/chatservice.cpp.o -c /home/legolas/桌面/ChatServer/src/server/chatservice.cpp
 
 src/server/CMakeFiles/ChatServer.dir/chatservice.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ChatServer.dir/chatservice.cpp.i"
-	cd /home/legolas/桌面/ChatServer/src/server && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/legolas/桌面/ChatServer/src/server/chatservice.cpp > CMakeFiles/ChatServer.dir/chatservice.cpp.i
+	cd /home/legolas/桌面/ChatServer/build/src/server && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/legolas/桌面/ChatServer/src/server/chatservice.cpp > CMakeFiles/ChatServer.dir/chatservice.cpp.i
 
 src/server/CMakeFiles/ChatServer.dir/chatservice.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ChatServer.dir/chatservice.cpp.s"
-	cd /home/legolas/桌面/ChatServer/src/server && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/legolas/桌面/ChatServer/src/server/chatservice.cpp -o CMakeFiles/ChatServer.dir/chatservice.cpp.s
+	cd /home/legolas/桌面/ChatServer/build/src/server && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/legolas/桌面/ChatServer/src/server/chatservice.cpp -o CMakeFiles/ChatServer.dir/chatservice.cpp.s
 
 src/server/CMakeFiles/ChatServer.dir/chatservice.cpp.o.requires:
 
@@ -106,17 +106,17 @@ src/server/CMakeFiles/ChatServer.dir/chatservice.cpp.o.provides.build: src/serve
 
 
 src/server/CMakeFiles/ChatServer.dir/main.cpp.o: src/server/CMakeFiles/ChatServer.dir/flags.make
-src/server/CMakeFiles/ChatServer.dir/main.cpp.o: src/server/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/legolas/桌面/ChatServer/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/server/CMakeFiles/ChatServer.dir/main.cpp.o"
-	cd /home/legolas/桌面/ChatServer/src/server && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ChatServer.dir/main.cpp.o -c /home/legolas/桌面/ChatServer/src/server/main.cpp
+src/server/CMakeFiles/ChatServer.dir/main.cpp.o: ../src/server/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/legolas/桌面/ChatServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/server/CMakeFiles/ChatServer.dir/main.cpp.o"
+	cd /home/legolas/桌面/ChatServer/build/src/server && /usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ChatServer.dir/main.cpp.o -c /home/legolas/桌面/ChatServer/src/server/main.cpp
 
 src/server/CMakeFiles/ChatServer.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ChatServer.dir/main.cpp.i"
-	cd /home/legolas/桌面/ChatServer/src/server && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/legolas/桌面/ChatServer/src/server/main.cpp > CMakeFiles/ChatServer.dir/main.cpp.i
+	cd /home/legolas/桌面/ChatServer/build/src/server && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/legolas/桌面/ChatServer/src/server/main.cpp > CMakeFiles/ChatServer.dir/main.cpp.i
 
 src/server/CMakeFiles/ChatServer.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ChatServer.dir/main.cpp.s"
-	cd /home/legolas/桌面/ChatServer/src/server && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/legolas/桌面/ChatServer/src/server/main.cpp -o CMakeFiles/ChatServer.dir/main.cpp.s
+	cd /home/legolas/桌面/ChatServer/build/src/server && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/legolas/桌面/ChatServer/src/server/main.cpp -o CMakeFiles/ChatServer.dir/main.cpp.s
 
 src/server/CMakeFiles/ChatServer.dir/main.cpp.o.requires:
 
@@ -138,16 +138,16 @@ ChatServer_OBJECTS = \
 # External object files for target ChatServer
 ChatServer_EXTERNAL_OBJECTS =
 
-bin/ChatServer: src/server/CMakeFiles/ChatServer.dir/chatserver.cpp.o
-bin/ChatServer: src/server/CMakeFiles/ChatServer.dir/chatservice.cpp.o
-bin/ChatServer: src/server/CMakeFiles/ChatServer.dir/main.cpp.o
-bin/ChatServer: src/server/CMakeFiles/ChatServer.dir/build.make
-bin/ChatServer: src/server/CMakeFiles/ChatServer.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/legolas/桌面/ChatServer/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable ../../bin/ChatServer"
-	cd /home/legolas/桌面/ChatServer/src/server && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ChatServer.dir/link.txt --verbose=$(VERBOSE)
+../bin/ChatServer: src/server/CMakeFiles/ChatServer.dir/chatserver.cpp.o
+../bin/ChatServer: src/server/CMakeFiles/ChatServer.dir/chatservice.cpp.o
+../bin/ChatServer: src/server/CMakeFiles/ChatServer.dir/main.cpp.o
+../bin/ChatServer: src/server/CMakeFiles/ChatServer.dir/build.make
+../bin/ChatServer: src/server/CMakeFiles/ChatServer.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/legolas/桌面/ChatServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable ../../../bin/ChatServer"
+	cd /home/legolas/桌面/ChatServer/build/src/server && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ChatServer.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-src/server/CMakeFiles/ChatServer.dir/build: bin/ChatServer
+src/server/CMakeFiles/ChatServer.dir/build: ../bin/ChatServer
 
 .PHONY : src/server/CMakeFiles/ChatServer.dir/build
 
@@ -158,10 +158,10 @@ src/server/CMakeFiles/ChatServer.dir/requires: src/server/CMakeFiles/ChatServer.
 .PHONY : src/server/CMakeFiles/ChatServer.dir/requires
 
 src/server/CMakeFiles/ChatServer.dir/clean:
-	cd /home/legolas/桌面/ChatServer/src/server && $(CMAKE_COMMAND) -P CMakeFiles/ChatServer.dir/cmake_clean.cmake
+	cd /home/legolas/桌面/ChatServer/build/src/server && $(CMAKE_COMMAND) -P CMakeFiles/ChatServer.dir/cmake_clean.cmake
 .PHONY : src/server/CMakeFiles/ChatServer.dir/clean
 
 src/server/CMakeFiles/ChatServer.dir/depend:
-	cd /home/legolas/桌面/ChatServer && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/legolas/桌面/ChatServer /home/legolas/桌面/ChatServer/src/server /home/legolas/桌面/ChatServer /home/legolas/桌面/ChatServer/src/server /home/legolas/桌面/ChatServer/src/server/CMakeFiles/ChatServer.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/legolas/桌面/ChatServer/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/legolas/桌面/ChatServer /home/legolas/桌面/ChatServer/src/server /home/legolas/桌面/ChatServer/build /home/legolas/桌面/ChatServer/build/src/server /home/legolas/桌面/ChatServer/build/src/server/CMakeFiles/ChatServer.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : src/server/CMakeFiles/ChatServer.dir/depend
 

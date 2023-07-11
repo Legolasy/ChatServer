@@ -3,7 +3,15 @@
 
 src/server/CMakeFiles/ChatServer.dir/chatserver.cpp.o
  /home/legolas/桌面/ChatServer/src/server/chatserver.cpp
+ include/json.hpp
+ include/public.hpp
  include/server/chatserver.hpp
+ include/server/chatservice.hpp
+src/server/CMakeFiles/ChatServer.dir/chatservice.cpp.o
+ /home/legolas/桌面/ChatServer/src/server/chatservice.cpp
+ include/json.hpp
+ include/public.hpp
+ include/server/chatservice.hpp
 src/server/CMakeFiles/ChatServer.dir/main.cpp.o
  /home/legolas/桌面/ChatServer/src/server/main.cpp
  include/server/chatserver.hpp
