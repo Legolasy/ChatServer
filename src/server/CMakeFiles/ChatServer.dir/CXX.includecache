@@ -42,6 +42,16 @@ chatserver.hpp
 iostream
 -
 
+/home/legolas/桌面/ChatServer/src/server/usermodel.cpp
+usermodel.hpp
+/home/legolas/桌面/ChatServer/src/server/usermodel.hpp
+db.h
+/home/legolas/桌面/ChatServer/src/server/db.h
+iostream
+-
+muduo/base/Logging.h
+-
+
 include/json.hpp
 algorithm
 -
@@ -391,10 +401,20 @@ mypublic.hpp
 include/server/mypublic.hpp
 json.hpp
 include/server/json.hpp
+usermodel.hpp
+include/server/usermodel.hpp
 
 include/server/db/db.h
 mysql/mysql.h
 -
 string
 -
+
+include/server/user.hpp
+string
+-
+
+include/server/usermodel.hpp
+user.hpp
+include/server/user.hpp
 

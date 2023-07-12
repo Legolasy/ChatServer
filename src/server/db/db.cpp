@@ -27,6 +27,11 @@ static string dbname = "chat";
         {
             // ASC to GBK
             mysql_query(_conn, "set names gbk");
+            LOG_INFO<< "CONNECT TO MYSQL SUCCESS";
+        }
+        else
+        {
+            LOG_INFO<< "CONNECT TO MYSQL FAILED";
         }
         return p; 
     }
@@ -49,3 +54,7 @@ static string dbname = "chat";
     return mysql_use_result(_conn);
     }
 
+    //获取mysql连接
+    MYSQL* MySQL::getConn(){
+        return this->_conn;
+    }

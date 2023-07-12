@@ -4,7 +4,7 @@
 #include <string>
 using namespace std;
 
-// User表的ORM类
+// User表的ORM类 对象关系映射 避免原生sql 而是操作对象
 class User
 {
 public:

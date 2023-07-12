@@ -233,6 +233,33 @@ main.cpp.s:
 	cd /home/legolas/桌面/ChatServer && $(MAKE) -f src/server/CMakeFiles/ChatServer.dir/build.make src/server/CMakeFiles/ChatServer.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+usermodel.o: usermodel.cpp.o
+
+.PHONY : usermodel.o
+
+# target to build an object file
+usermodel.cpp.o:
+	cd /home/legolas/桌面/ChatServer && $(MAKE) -f src/server/CMakeFiles/ChatServer.dir/build.make src/server/CMakeFiles/ChatServer.dir/usermodel.cpp.o
+.PHONY : usermodel.cpp.o
+
+usermodel.i: usermodel.cpp.i
+
+.PHONY : usermodel.i
+
+# target to preprocess a source file
+usermodel.cpp.i:
+	cd /home/legolas/桌面/ChatServer && $(MAKE) -f src/server/CMakeFiles/ChatServer.dir/build.make src/server/CMakeFiles/ChatServer.dir/usermodel.cpp.i
+.PHONY : usermodel.cpp.i
+
+usermodel.s: usermodel.cpp.s
+
+.PHONY : usermodel.s
+
+# target to generate assembly for a file
+usermodel.cpp.s:
+	cd /home/legolas/桌面/ChatServer && $(MAKE) -f src/server/CMakeFiles/ChatServer.dir/build.make src/server/CMakeFiles/ChatServer.dir/usermodel.cpp.s
+.PHONY : usermodel.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -254,6 +281,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... usermodel.o"
+	@echo "... usermodel.i"
+	@echo "... usermodel.s"
 .PHONY : help
 
 
