@@ -36,11 +36,25 @@ mysql/mysql.h
 string
 -
 
+/home/legolas/桌面/ChatServer/src/server/friendmodel.cpp
+friendmodel.hpp
+/home/legolas/桌面/ChatServer/src/server/friendmodel.hpp
+user.hpp
+/home/legolas/桌面/ChatServer/src/server/user.hpp
+db.h
+/home/legolas/桌面/ChatServer/src/server/db.h
+muduo/base/Logging.h
+-
+
 /home/legolas/桌面/ChatServer/src/server/main.cpp
 chatserver.hpp
 /home/legolas/桌面/ChatServer/src/server/chatserver.hpp
+signal.h
+-
 iostream
 -
+chatservice.hpp
+/home/legolas/桌面/ChatServer/src/server/chatservice.hpp
 
 /home/legolas/桌面/ChatServer/src/server/offlinemessagemodel.cpp
 offlinemessagemodel.hpp
@@ -417,12 +431,20 @@ mutex
 -
 offlinemessagemodel.hpp
 include/server/offlinemessagemodel.hpp
+friendmodel.hpp
+include/server/friendmodel.hpp
 
 include/server/db/db.h
 mysql/mysql.h
 -
 string
 -
+
+include/server/friendmodel.hpp
+vector
+-
+user.hpp
+include/server/user.hpp
 
 include/server/offlinemessagemodel.hpp
 vector

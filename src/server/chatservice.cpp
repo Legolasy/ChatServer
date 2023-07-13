@@ -16,6 +16,7 @@ ChatService::ChatService()
     _msgHandlerMap.insert({LOGIN_MSG,std::bind(&ChatService::login,this,_1,_2,_3)});
     _msgHandlerMap.insert({REG_MSG,std::bind(&ChatService::reg,this,_1,_2,_3)});
     _msgHandlerMap.insert({ONE_CHAT_MSG,std::bind(&ChatService::oneChat,this,_1,_2,_3)});
+    _msgHandlerMap.insert({ADD_FRIEND_MSG,std::bind(&ChatService::addFriend,this,_1,_2,_3)});
 }
 //获取消息对应的处理器
 MsgHandler ChatService::getHandler(int msgid)
@@ -87,6 +88,24 @@ MsgHandler ChatService::getHandler(int msgid)
                     js_response["offlinemsg"]=vec; //json 适配容器
                     //读取后 删除用户的离线消息
                     _offlineMsgModel.remove(user.getId());
+                }
+
+                // 查询好友信息 并返回
+                vector<User> userVec = _friendModel.query(user.getId());
+                if(!userVec.empty())
+                {
+                    LOG_INFO<<"User Have friends!";
+                    // 返回好友信息
+                    vector<string> vec2;
+                    for(User &user : userVec)
+                    {
+                        json tmp;
+                        tmp["id"] = user.getId();
+                        tmp["name"] =  user.getName();
+                        tmp["state"] = user.getState();
+                        vec2.emplace_back(tmp.dump());
+                    }
+                    js_response["friends"] = vec2;
                 }
 
                 conn->send(js_response.dump());
@@ -178,4 +197,20 @@ MsgHandler ChatService::getHandler(int msgid)
             user.setState("offline");
             _userModel.updateState(user); //mysql  保证线程安全
         }
+    }
+    //服务器退出，重置用户state
+    void ChatService::reset() {
+        //重置用户state to offline
+        _userModel.resetState();
+    }
+    //添加好友业务
+    void ChatService::addFriend(const TcpConnectionPtr &conn, json &js,Timestamp time) {
+        int uid = js["id"].get<int>();
+        int fid = js["friendid"].get<int>();
+
+        //验证fid是否存在 todo
+
+        //存储好友信息
+        _friendModel.insert(uid,fid);
+
     }
