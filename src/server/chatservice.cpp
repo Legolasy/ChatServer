@@ -50,6 +50,7 @@ MsgHandler ChatService::getHandler(int msgid)
             if(user.getState()=="online")
             {
                 //已经登陆 不能重复登录
+                LOG_INFO<<"LOGIN FAILED, Already Login!"; //errmsg 错误信息
                 json js_response;
                 js_response["msgid"]=LOGIN_MSG_ACK;
                 js_response["errno"] = 2; //错误类型 标识 不同错误
@@ -60,7 +61,16 @@ MsgHandler ChatService::getHandler(int msgid)
             else
             {
                 //登陆ok
+                LOG_INFO<<"Login SUCCESS!";
+                //记录用户登陆conn 注意多线程并发加锁
+                {
+                    LOG_INFO<<"Save User Conn!";
+                    //析构自动释放锁 限制作用域
+                    lock_guard<mutex>lock(_connMutex);
+                    _userConnMap.insert({id,conn}); 
+                }
                 //更新用户state off->online
+                LOG_INFO<<"User State Update off to online!";
                 user.setState("online");
                 _userModel.updateState(user);
                 json js_response;
@@ -74,6 +84,7 @@ MsgHandler ChatService::getHandler(int msgid)
         else
         {
             //失败
+            LOG_INFO<<"LOGIN FAILED,Wrong Account or PWD !";
             json js_response;
             js_response["msgid"]=LOGIN_MSG_ACK;
             js_response["errno"] = 1; //错误类型 标识 1代表有错误
@@ -111,5 +122,30 @@ MsgHandler ChatService::getHandler(int msgid)
             js_response["errmsg"] = "REG FAILED"; //errmsg 错误信息
             //js_response["id"]=user.getId();
             conn->send(js_response.dump());
+        }
+    }
+
+    // 处理客户端异常退出
+    void ChatService::clientCloseException(const TcpConnectionPtr &conn)
+    {
+        User user;
+        {
+            lock_guard<mutex>lock(_connMutex);
+            //1._userConnMap 删除连接
+            for(auto it=_userConnMap.begin();it!=_userConnMap.end();it++)
+            {
+                if(it->second == conn)
+                {
+                    user.setId(it->first);
+                    _userConnMap.erase(it);
+                    break;
+                }
+            }
+        }
+        if(user.getId() != -1)
+        {
+            LOG_INFO<<"User State Update on to offline!";
+            user.setState("offline");
+            _userModel.updateState(user); //mysql  保证线程安全
         }
     }

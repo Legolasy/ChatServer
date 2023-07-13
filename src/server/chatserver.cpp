@@ -31,6 +31,7 @@ void ChatServer::onConn(const TcpConnectionPtr& conn)
     // 断开
     if(!conn->connected())
     {
+        ChatService::instance()->clientCloseException(conn);
         conn->shutdown();
     }
 };

@@ -6,6 +6,7 @@
 #include "mypublic.hpp"
 #include "json.hpp"
 #include "usermodel.hpp"
+#include<mutex>
 using namespace std;
 using namespace muduo;
 using namespace muduo::net;
@@ -25,10 +26,17 @@ public:
     void reg(const TcpConnectionPtr &conn,json &js,Timestamp);
     //获取消息对应的处理器
     MsgHandler getHandler(int msgid);
+    //处理客户端异常退出
+    void clientCloseException(const TcpConnectionPtr &conn);
 private:
     ChatService(); //构造函数私有化
+
+    //回调函数 映射map
     unordered_map<int,MsgHandler> _msgHandlerMap;
-    
+    //用户 id-conn 映射map
+    unordered_map<int,TcpConnectionPtr> _userConnMap;    
+    //互斥锁
+    mutex _connMutex;
     //数据操作类对象
     UserModel _userModel;
 };
