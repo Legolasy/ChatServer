@@ -3,39 +3,46 @@
 #include<string>
 #include "mypublic.hpp"
 using namespace muduo;
-//获取单例对象
-ChatService* ChatService::instance()
-{
-    static ChatService service;
-    return &service;
-}
+    //获取单例对象
+    ChatService* ChatService::instance()
+    {
+        static ChatService service;
+        return &service;
+    }
 
-//在构造函数中 注册id-函数
-ChatService::ChatService()
-{
-    _msgHandlerMap.insert({LOGIN_MSG,std::bind(&ChatService::login,this,_1,_2,_3)});
-    _msgHandlerMap.insert({REG_MSG,std::bind(&ChatService::reg,this,_1,_2,_3)});
-    _msgHandlerMap.insert({ONE_CHAT_MSG,std::bind(&ChatService::oneChat,this,_1,_2,_3)});
-    _msgHandlerMap.insert({ADD_FRIEND_MSG,std::bind(&ChatService::addFriend,this,_1,_2,_3)});
-}
-//获取消息对应的处理器
-MsgHandler ChatService::getHandler(int msgid)
-{
-    auto it = _msgHandlerMap.find(msgid);
-    //没有此方法 日志记录错误 返回默认处理器 避免异常导致程序over
-    if(it == _msgHandlerMap.end())
+    //在构造函数中 注册id-函数
+    ChatService::ChatService()
     {
-        //返回默认处理器
-        return [=](const TcpConnectionPtr &conn,json &js,Timestamp)
+        _msgHandlerMap.insert({LOGIN_MSG,std::bind(&ChatService::login,this,_1,_2,_3)});
+        _msgHandlerMap.insert({REG_MSG,std::bind(&ChatService::reg,this,_1,_2,_3)});
+        _msgHandlerMap.insert({ONE_CHAT_MSG,std::bind(&ChatService::oneChat,this,_1,_2,_3)});
+        _msgHandlerMap.insert({ADD_FRIEND_MSG,std::bind(&ChatService::addFriend,this,_1,_2,_3)});
+
+        //群组业务
+        // 群组业务管理相关事件处理回调注册
+        _msgHandlerMap.insert({CREATE_GROUP_MSG, std::bind(&ChatService::createGroup, this, _1, _2, _3)});
+        _msgHandlerMap.insert({ADD_GROUP_MSG, std::bind(&ChatService::addGroup, this, _1, _2, _3)});
+        _msgHandlerMap.insert({GROUP_CHAT_MSG, std::bind(&ChatService::groupChat, this, _1, _2, _3)});
+
+    }
+    //获取消息对应的处理器
+    MsgHandler ChatService::getHandler(int msgid)
+    {
+        auto it = _msgHandlerMap.find(msgid);
+        //没有此方法 日志记录错误 返回默认处理器 避免异常导致程序over
+        if(it == _msgHandlerMap.end())
         {
-            LOG_ERROR << "msgid: "<<msgid <<" cannot find handler";
-        };
+            //返回默认处理器
+            return [=](const TcpConnectionPtr &conn,json &js,Timestamp)
+            {
+                LOG_ERROR << "msgid: "<<msgid <<" cannot find handler";
+            };
+        }
+        else
+        {
+            return _msgHandlerMap[msgid];
+        }
     }
-    else
-    {
-        return _msgHandlerMap[msgid];
-    }
-}
     //登陆业务
     void ChatService::login(const TcpConnectionPtr &conn,json &js,Timestamp)
     {
@@ -107,6 +114,36 @@ MsgHandler ChatService::getHandler(int msgid)
                     }
                     js_response["friends"] = vec2;
                 }
+
+                // 查询用户的群组信息
+                vector<Group> groupuserVec = _groupModel.queryGroups(id);
+                if (!groupuserVec.empty())
+                {
+                    // group:[{groupid:[xxx, xxx, xxx, xxx]}]
+                    vector<string> groupV;
+                    for (Group &group : groupuserVec)
+                    {
+                        json grpjson;
+                        grpjson["id"] = group.getId();
+                        grpjson["groupname"] = group.getName();
+                        grpjson["groupdesc"] = group.getDesc();
+                        vector<string> userV;
+                        for (GroupUser &user : group.getUsers())
+                        {
+                            json js;
+                            js["id"] = user.getId();
+                            js["name"] = user.getName();
+                            js["state"] = user.getState();
+                            js["role"] = user.getRole();
+                            userV.push_back(js.dump());
+                        }
+                        grpjson["users"] = userV;
+                        groupV.push_back(grpjson.dump());
+                    }
+
+                    js_response["groups"] = groupV;
+                }
+
 
                 conn->send(js_response.dump());
             }
@@ -213,4 +250,69 @@ MsgHandler ChatService::getHandler(int msgid)
         //存储好友信息
         _friendModel.insert(uid,fid);
 
+    }
+
+    // 创建群组业务
+    void ChatService::createGroup(const TcpConnectionPtr &conn, json &js, Timestamp time)
+    {
+        int userid = js["id"].get<int>();
+        string name = js["groupname"];
+        string desc = js["groupdesc"];
+
+        // 存储新创建的群组信息
+        Group group(-1, name, desc);
+
+        //group id 由 数据库主键自动生成
+        if (_groupModel.createGroup(group))
+        {
+            // 把创建者 加入群
+            _groupModel.addGroup(userid, group.getId(), "creator"); // creator 改成const常量 todo
+        }
+    }
+
+    // 加入群组业务
+    // 添加客户端响应 todo
+    void ChatService::addGroup(const TcpConnectionPtr &conn, json &js, Timestamp time)
+    {
+        int userid = js["id"].get<int>();
+        int groupid = js["groupid"].get<int>();
+        _groupModel.addGroup(userid, groupid, "normal");
+    }
+
+    // 群组聊天业务
+    void ChatService::groupChat(const TcpConnectionPtr &conn, json &js, Timestamp time)
+    {
+        int userid = js["id"].get<int>();
+        int groupid = js["groupid"].get<int>();
+        // 群用户id
+        vector<int> useridVec = _groupModel.queryGroupUsers(userid, groupid);
+        lock_guard<mutex> lock(_connMutex);
+        for (int id : useridVec)
+        {
+            //群用户id对应的conn
+            auto it = _userConnMap.find(id); 
+            //在线
+            if (it != _userConnMap.end())
+            {
+                // 转发群消息
+                it->second->send(js.dump());
+            }
+            else
+            {
+                //不在线
+                _offlineMsgModel.insert(id,js.dump());
+
+                // // 查询toid是否在线 
+                // User user = _userModel.query(id);
+                // if (user.getState() == "online")
+                // {
+                //     _redis.publish(id, js.dump());
+                // }
+                // else
+                // {
+                //     // 存储离线群消息
+                //     _offlineMsgModel.insert(id, js.dump());
+                // }
+            }
+        }
     }

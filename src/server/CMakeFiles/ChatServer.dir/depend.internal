@@ -7,43 +7,59 @@ src/server/CMakeFiles/ChatServer.dir/chatserver.cpp.o
  include/mypublic.hpp
  include/server/chatserver.hpp
  include/server/chatservice.hpp
- include/server/friendmodel.hpp
- include/server/offlinemessagemodel.hpp
- include/server/user.hpp
- include/server/usermodel.hpp
+ include/server/model/friendmodel.hpp
+ include/server/model/group.hpp
+ include/server/model/groupmodel.hpp
+ include/server/model/groupuser.hpp
+ include/server/model/offlinemessagemodel.hpp
+ include/server/model/user.hpp
+ include/server/model/usermodel.hpp
 src/server/CMakeFiles/ChatServer.dir/chatservice.cpp.o
  /home/legolas/桌面/ChatServer/src/server/chatservice.cpp
  include/json.hpp
  include/mypublic.hpp
  include/server/chatservice.hpp
- include/server/friendmodel.hpp
- include/server/offlinemessagemodel.hpp
- include/server/user.hpp
- include/server/usermodel.hpp
+ include/server/model/friendmodel.hpp
+ include/server/model/group.hpp
+ include/server/model/groupmodel.hpp
+ include/server/model/groupuser.hpp
+ include/server/model/offlinemessagemodel.hpp
+ include/server/model/user.hpp
+ include/server/model/usermodel.hpp
 src/server/CMakeFiles/ChatServer.dir/db/db.cpp.o
  /home/legolas/桌面/ChatServer/src/server/db/db.cpp
  include/server/db/db.h
-src/server/CMakeFiles/ChatServer.dir/friendmodel.cpp.o
- /home/legolas/桌面/ChatServer/src/server/friendmodel.cpp
- include/server/db/db.h
- include/server/friendmodel.hpp
- include/server/user.hpp
 src/server/CMakeFiles/ChatServer.dir/main.cpp.o
  /home/legolas/桌面/ChatServer/src/server/main.cpp
  include/json.hpp
  include/mypublic.hpp
  include/server/chatserver.hpp
  include/server/chatservice.hpp
- include/server/friendmodel.hpp
- include/server/offlinemessagemodel.hpp
- include/server/user.hpp
- include/server/usermodel.hpp
-src/server/CMakeFiles/ChatServer.dir/offlinemessagemodel.cpp.o
- /home/legolas/桌面/ChatServer/src/server/offlinemessagemodel.cpp
+ include/server/model/friendmodel.hpp
+ include/server/model/group.hpp
+ include/server/model/groupmodel.hpp
+ include/server/model/groupuser.hpp
+ include/server/model/offlinemessagemodel.hpp
+ include/server/model/user.hpp
+ include/server/model/usermodel.hpp
+src/server/CMakeFiles/ChatServer.dir/model/friendmodel.cpp.o
+ /home/legolas/桌面/ChatServer/src/server/model/friendmodel.cpp
  include/server/db/db.h
- include/server/offlinemessagemodel.hpp
-src/server/CMakeFiles/ChatServer.dir/usermodel.cpp.o
- /home/legolas/桌面/ChatServer/src/server/usermodel.cpp
+ include/server/model/friendmodel.hpp
+ include/server/model/user.hpp
+src/server/CMakeFiles/ChatServer.dir/model/groupmodel.cpp.o
+ /home/legolas/桌面/ChatServer/src/server/model/groupmodel.cpp
  include/server/db/db.h
- include/server/user.hpp
- include/server/usermodel.hpp
+ include/server/model/group.hpp
+ include/server/model/groupmodel.hpp
+ include/server/model/groupuser.hpp
+ include/server/model/user.hpp
+src/server/CMakeFiles/ChatServer.dir/model/offlinemessagemodel.cpp.o
+ /home/legolas/桌面/ChatServer/src/server/model/offlinemessagemodel.cpp
+ include/server/db/db.h
+ include/server/model/offlinemessagemodel.hpp
+src/server/CMakeFiles/ChatServer.dir/model/usermodel.cpp.o
+ /home/legolas/桌面/ChatServer/src/server/model/usermodel.cpp
+ include/server/db/db.h
+ include/server/model/user.hpp
+ include/server/model/usermodel.hpp
