@@ -42,6 +42,16 @@ chatserver.hpp
 iostream
 -
 
+/home/legolas/桌面/ChatServer/src/server/offlinemessagemodel.cpp
+offlinemessagemodel.hpp
+/home/legolas/桌面/ChatServer/src/server/offlinemessagemodel.hpp
+db.h
+/home/legolas/桌面/ChatServer/src/server/db.h
+mysql/mysql.h
+-
+muduo/base/Logging.h
+-
+
 /home/legolas/桌面/ChatServer/src/server/usermodel.cpp
 usermodel.hpp
 /home/legolas/桌面/ChatServer/src/server/usermodel.hpp
@@ -405,9 +415,17 @@ usermodel.hpp
 include/server/usermodel.hpp
 mutex
 -
+offlinemessagemodel.hpp
+include/server/offlinemessagemodel.hpp
 
 include/server/db/db.h
 mysql/mysql.h
+-
+string
+-
+
+include/server/offlinemessagemodel.hpp
+vector
 -
 string
 -

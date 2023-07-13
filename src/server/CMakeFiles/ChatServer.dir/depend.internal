@@ -7,6 +7,7 @@ src/server/CMakeFiles/ChatServer.dir/chatserver.cpp.o
  include/mypublic.hpp
  include/server/chatserver.hpp
  include/server/chatservice.hpp
+ include/server/offlinemessagemodel.hpp
  include/server/user.hpp
  include/server/usermodel.hpp
 src/server/CMakeFiles/ChatServer.dir/chatservice.cpp.o
@@ -14,6 +15,7 @@ src/server/CMakeFiles/ChatServer.dir/chatservice.cpp.o
  include/json.hpp
  include/mypublic.hpp
  include/server/chatservice.hpp
+ include/server/offlinemessagemodel.hpp
  include/server/user.hpp
  include/server/usermodel.hpp
 src/server/CMakeFiles/ChatServer.dir/db/db.cpp.o
@@ -22,6 +24,10 @@ src/server/CMakeFiles/ChatServer.dir/db/db.cpp.o
 src/server/CMakeFiles/ChatServer.dir/main.cpp.o
  /home/legolas/桌面/ChatServer/src/server/main.cpp
  include/server/chatserver.hpp
+src/server/CMakeFiles/ChatServer.dir/offlinemessagemodel.cpp.o
+ /home/legolas/桌面/ChatServer/src/server/offlinemessagemodel.cpp
+ include/server/db/db.h
+ include/server/offlinemessagemodel.hpp
 src/server/CMakeFiles/ChatServer.dir/usermodel.cpp.o
  /home/legolas/桌面/ChatServer/src/server/usermodel.cpp
  include/server/db/db.h

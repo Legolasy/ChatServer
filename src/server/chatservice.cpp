@@ -15,6 +15,7 @@ ChatService::ChatService()
 {
     _msgHandlerMap.insert({LOGIN_MSG,std::bind(&ChatService::login,this,_1,_2,_3)});
     _msgHandlerMap.insert({REG_MSG,std::bind(&ChatService::reg,this,_1,_2,_3)});
+    _msgHandlerMap.insert({ONE_CHAT_MSG,std::bind(&ChatService::oneChat,this,_1,_2,_3)});
 }
 //获取消息对应的处理器
 MsgHandler ChatService::getHandler(int msgid)
@@ -78,6 +79,16 @@ MsgHandler ChatService::getHandler(int msgid)
                 js_response["errno"] = 0; //错误类型 标识 0代表没有错误
                 js_response["id"]=user.getId();
                 js_response["name"]=user.getName();
+                
+                //查询是否有离线消息
+                auto vec = _offlineMsgModel.query(user.getId());
+                if(!vec.empty())
+                {
+                    js_response["offlinemsg"]=vec; //json 适配容器
+                    //读取后 删除用户的离线消息
+                    _offlineMsgModel.remove(user.getId());
+                }
+
                 conn->send(js_response.dump());
             }
         }
@@ -123,6 +134,25 @@ MsgHandler ChatService::getHandler(int msgid)
             //js_response["id"]=user.getId();
             conn->send(js_response.dump());
         }
+    }
+
+    // 一对一聊天
+    void ChatService::oneChat(const TcpConnectionPtr &conn, json &js,Timestamp time) {
+        
+        int toid = js["to"].get<int>();
+        {
+            lock_guard<mutex>lock(_connMutex);
+            //找到转发的id对象的conn 转发js
+            auto it = _userConnMap.find(toid);
+            if(it!=_userConnMap.end())
+            {
+                //找到了目标id 服务器把消息推给toid的conn
+                it->second->send(js.dump());
+                return;
+            }
+        }
+        //toid 不在线 离线存储信息
+        _offlineMsgModel.insert(toid,js.dump());
     }
 
     // 处理客户端异常退出
