@@ -18,7 +18,6 @@ bool GroupModel::createGroup(Group &group)
             return true;
         }
     }
-
     return false;
 }
 

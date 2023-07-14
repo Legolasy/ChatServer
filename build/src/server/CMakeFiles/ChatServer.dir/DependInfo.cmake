@@ -21,6 +21,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../include/server"
   "../include/server/model"
   "../include/server/db"
+  "../thirdparty"
   )
 
 # Targets to which this target links.

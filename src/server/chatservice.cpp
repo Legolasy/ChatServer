@@ -2,6 +2,7 @@
 #include<muduo/base/Logging.h>
 #include<string>
 #include "mypublic.hpp"
+#include "redis.hpp"
 using namespace muduo;
     //获取单例对象
     ChatService* ChatService::instance()
@@ -23,6 +24,14 @@ using namespace muduo;
         _msgHandlerMap.insert({CREATE_GROUP_MSG, std::bind(&ChatService::createGroup, this, _1, _2, _3)});
         _msgHandlerMap.insert({ADD_GROUP_MSG, std::bind(&ChatService::addGroup, this, _1, _2, _3)});
         _msgHandlerMap.insert({GROUP_CHAT_MSG, std::bind(&ChatService::groupChat, this, _1, _2, _3)});
+
+
+        // 连接 redis 服务器
+        if (_redis.connect())
+        {
+            // 设置上报消息的回调函数
+            _redis.init_notify_handler(std::bind(&ChatService::handleRedisSubscribeMessage,this,_1,_2));
+        }
 
     }
     //获取消息对应的处理器
@@ -78,6 +87,10 @@ using namespace muduo;
                     lock_guard<mutex>lock(_connMutex);
                     _userConnMap.insert({id,conn}); 
                 }
+
+                // user登陆成功 向redis 订阅channel(id)
+                _redis.subscribe(user.getId());
+
                 //更新用户state off->online
                 LOG_INFO<<"User State Update off to online!";
                 user.setState("online");
@@ -191,11 +204,28 @@ using namespace muduo;
             conn->send(js_response.dump());
         }
     }
-
+    // 处理注销业务
+    void ChatService::loginout(const TcpConnectionPtr &conn, json &js, Timestamp time)
+    {
+        int userid = js["id"].get<int>();
+        {
+            lock_guard<mutex> lock(_connMutex);
+            auto it = _userConnMap.find(userid);
+            if (it != _userConnMap.end())
+            {
+                _userConnMap.erase(it);
+            }
+        }
+        // 用户注销，相当于就是下线，在redis中取消订阅通道
+        _redis.unsubscribe(userid); 
+        // 更新用户的状态信息
+        User user(userid, "", "", "offline");
+        _userModel.updateState(user);
+    }
     // 一对一聊天
     void ChatService::oneChat(const TcpConnectionPtr &conn, json &js,Timestamp time) {
         
-        int toid = js["to"].get<int>();
+        int toid = js["toid"].get<int>();
         {
             lock_guard<mutex>lock(_connMutex);
             //找到转发的id对象的conn 转发js
@@ -207,8 +237,19 @@ using namespace muduo;
                 return;
             }
         }
-        //toid 不在线 离线存储信息
-        _offlineMsgModel.insert(toid,js.dump());
+        //toid 不在线 判断是否在其他机器上登陆
+        User user = _userModel.query(toid);
+        if(user.getState()=="online")
+        {
+            //在线 发到redis
+            _redis.publish(toid,js.dump());
+            return;
+        }
+        else
+        {
+            //不在线 离线转存
+            _offlineMsgModel.insert(toid,js.dump());
+        }
     }
 
     // 处理客户端异常退出
@@ -299,20 +340,35 @@ using namespace muduo;
             }
             else
             {
-                //不在线
-                _offlineMsgModel.insert(id,js.dump());
+                // //不在线
+                // _offlineMsgModel.insert(id,js.dump());
 
-                // // 查询toid是否在线 
-                // User user = _userModel.query(id);
-                // if (user.getState() == "online")
-                // {
-                //     _redis.publish(id, js.dump());
-                // }
-                // else
-                // {
-                //     // 存储离线群消息
-                //     _offlineMsgModel.insert(id, js.dump());
-                // }
+                // 查询toid是否在线 
+                User user = _userModel.query(id);
+                if (user.getState() == "online")
+                {
+                    _redis.publish(id, js.dump());
+                }
+                else
+                {
+                    // 存储离线群消息
+                    _offlineMsgModel.insert(id, js.dump());
+                }
             }
         }
+    }
+
+    // 从redis消息队列中获取订阅的消息
+    void ChatService::handleRedisSubscribeMessage(int userid, string msg)
+    {
+        lock_guard<mutex> lock(_connMutex);
+        auto it = _userConnMap.find(userid);
+        if (it != _userConnMap.end())
+        {
+            it->second->send(msg);
+            return;
+        }
+
+        // 存储该用户的离线消息
+        _offlineMsgModel.insert(userid, msg);
     }

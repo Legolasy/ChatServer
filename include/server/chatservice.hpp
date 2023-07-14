@@ -10,6 +10,7 @@
 #include "offlinemessagemodel.hpp"
 #include "friendmodel.hpp"
 #include "groupmodel.hpp"
+#include "redis.hpp"
 using namespace std;
 using namespace muduo;
 using namespace muduo::net;
@@ -27,7 +28,9 @@ public:
     void login(const TcpConnectionPtr &conn,json &js,Timestamp);
     //注册业务
     void reg(const TcpConnectionPtr &conn,json &js,Timestamp);
-    //一对一聊天
+    //注销登录
+    void loginout(const TcpConnectionPtr &conn, json &js, Timestamp time);
+    // 一对一聊天
     void oneChat(const TcpConnectionPtr &conn,json &js,Timestamp);
     //获取消息对应的处理器
     MsgHandler getHandler(int msgid);
@@ -43,7 +46,10 @@ public:
     void addGroup(const TcpConnectionPtr &conn, json &js, Timestamp time);
     // 群组聊天业务
     void groupChat(const TcpConnectionPtr &conn, json &js, Timestamp time);
-private:
+    // redis 上报消息 回调函数
+    void handleRedisSubscribeMessage(int userid, string msg);
+
+   private:
     ChatService(); //构造函数私有化
 
     //回调函数 映射map
@@ -57,6 +63,9 @@ private:
     OfflineMsgModel _offlineMsgModel;
     FriendModel _friendModel;
     GroupModel _groupModel;
+
+    // redis 操作对象
+    Redis _redis;
 };
 
 #endif

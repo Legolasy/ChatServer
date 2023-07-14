@@ -12,6 +12,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/legolas/桌面/ChatServer/src/server/model/groupmodel.cpp" "/home/legolas/桌面/ChatServer/src/server/CMakeFiles/ChatServer.dir/model/groupmodel.cpp.o"
   "/home/legolas/桌面/ChatServer/src/server/model/offlinemessagemodel.cpp" "/home/legolas/桌面/ChatServer/src/server/CMakeFiles/ChatServer.dir/model/offlinemessagemodel.cpp.o"
   "/home/legolas/桌面/ChatServer/src/server/model/usermodel.cpp" "/home/legolas/桌面/ChatServer/src/server/CMakeFiles/ChatServer.dir/model/usermodel.cpp.o"
+  "/home/legolas/桌面/ChatServer/src/server/redis/redis.cpp" "/home/legolas/桌面/ChatServer/src/server/CMakeFiles/ChatServer.dir/redis/redis.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -21,6 +22,8 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "include/server"
   "include/server/model"
   "include/server/db"
+  "include/server/redis"
+  "thirdparty"
   )
 
 # Targets to which this target links.

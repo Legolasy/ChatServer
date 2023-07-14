@@ -25,6 +25,8 @@ string
 -
 mypublic.hpp
 /home/legolas/桌面/ChatServer/src/server/mypublic.hpp
+redis.hpp
+/home/legolas/桌面/ChatServer/src/server/redis.hpp
 
 /home/legolas/桌面/ChatServer/src/server/db/db.cpp
 db.h
@@ -39,12 +41,12 @@ string
 /home/legolas/桌面/ChatServer/src/server/main.cpp
 chatserver.hpp
 /home/legolas/桌面/ChatServer/src/server/chatserver.hpp
-signal.h
--
-iostream
--
 chatservice.hpp
 /home/legolas/桌面/ChatServer/src/server/chatservice.hpp
+iostream
+-
+signal.h
+-
 
 /home/legolas/桌面/ChatServer/src/server/model/friendmodel.cpp
 friendmodel.hpp
@@ -80,6 +82,12 @@ db.h
 iostream
 -
 muduo/base/Logging.h
+-
+
+/home/legolas/桌面/ChatServer/src/server/redis/redis.cpp
+redis.hpp
+/home/legolas/桌面/ChatServer/src/server/redis/redis.hpp
+iostream
 -
 
 include/json.hpp
@@ -441,6 +449,8 @@ friendmodel.hpp
 include/server/friendmodel.hpp
 groupmodel.hpp
 include/server/groupmodel.hpp
+redis.hpp
+include/server/redis.hpp
 
 include/server/db/db.h
 mysql/mysql.h
@@ -487,4 +497,12 @@ string
 include/server/model/usermodel.hpp
 user.hpp
 include/server/model/user.hpp
+
+include/server/redis/redis.hpp
+hiredis/hiredis.h
+-
+thread
+-
+functional
+-
 

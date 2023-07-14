@@ -3,7 +3,11 @@
         {
             "name": "Linux",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/include/server",
+                "${workspaceFolder}/include/server/db",
+                "${workspaceFolder}/include/server/model",
+                "${workspaceFolder}/include/server/redis"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",
