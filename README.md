@@ -27,3 +27,5 @@ cd build
 rm -rf *  
 cmake ..  
 make  
+## 自动编译脚本
+./autobuild.sh  
