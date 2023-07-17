@@ -14,6 +14,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../include/server"
   "../include/server/model"
   "../include/server/db"
+  "../include/server/redis"
   "../thirdparty"
   )
 

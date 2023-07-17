@@ -6,5 +6,5 @@ CXX_FLAGS = -g -g
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/legolas/桌面/ChatServer/include -I/home/legolas/桌面/ChatServer/include/server -I/home/legolas/桌面/ChatServer/include/server/model -I/home/legolas/桌面/ChatServer/include/server/db -I/home/legolas/桌面/ChatServer/thirdparty 
+CXX_INCLUDES = -I/home/legolas/桌面/ChatServer/include -I/home/legolas/桌面/ChatServer/include/server -I/home/legolas/桌面/ChatServer/include/server/model -I/home/legolas/桌面/ChatServer/include/server/db -I/home/legolas/桌面/ChatServer/include/server/redis -I/home/legolas/桌面/ChatServer/thirdparty 
 
